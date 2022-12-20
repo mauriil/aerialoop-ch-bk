@@ -10,14 +10,14 @@ export class ItinerariesController {
   @Get()
   @ApiOkResponse({ type: [ItinerariesDto] })
   @HttpCode(200)
-  async getAll(): Promise<string[]> {
+  async getAll(): Promise<ItinerariesDto[]> {
     return this.itinerariesService.findAll();
   }
 
   @Get(':id')
   @ApiOkResponse({ type: ItinerariesDto })
   @HttpCode(200)
-  async getOne(@Param('id') id: string): Promise<any> {
+  async getOne(@Param('id') id: string): Promise<ItinerariesDto> {
     return this.itinerariesService.findOne(+id);
   }
 }
