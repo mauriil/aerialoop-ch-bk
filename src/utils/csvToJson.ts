@@ -4,13 +4,14 @@ export default function csvToJson(csvFile: string) {
   const result = [];
 
   const headers = lines[0].split(',');
+  const formattedHeaders = headers.map((header) => header.replace(/^\s+/g, ''));
 
   for (let i = 1; i < lines.length; i++) {
     const obj = {};
     const currentline = lines[i].split(',');
 
-    for (let j = 0; j < headers.length; j++) {
-      obj[headers[j]] = currentline[j];
+    for (let j = 0; j < formattedHeaders.length; j++) {
+      obj[formattedHeaders[j]] = currentline[j];
     }
 
     if (!!currentline[0]) {
